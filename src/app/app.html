@@ -1,6 +1,9 @@
-<div class="container mt-5">
-  <div class="alert alert-success" role="alert">
-    Bootstrap est installé avec succès !
-  </div>
-  <button type="button" class="btn btn-primary">Bouton Bootstrap</button>
+<div class="app-layout">
+  <app-header></app-header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
 </div>

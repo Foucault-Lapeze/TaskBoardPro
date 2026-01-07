@@ -1,0 +1,16 @@
+/* Petit effet de survol pour rendre les cartes interactives */
+.feature-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px); /* La carte monte légèrement */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; /* L'ombre s'accentue */
+  cursor: default;
+}
+
+/* Ajustement pour le texte lead */
+.lead {
+  max-width: 600px;
+  margin: 0 auto;
+}
