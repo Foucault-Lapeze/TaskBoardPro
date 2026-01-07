@@ -1,1 +1,67 @@
-<p>home works!</p>
+<div class="task-creation-container">
+  <h2>Nouvelle Tâche</h2>
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+    <div class="form-group">
+      <input type="text" formControlName="title" placeholder="Que devez-vous faire ?" class="form-input" />
+    </div>
+    <div class="form-group">
+      <select formControlName="priority" class="form-select">
+        <option value="low">Basse</option>
+        <option value="medium">Moyenne</option>
+        <option value="high">Haute</option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!taskForm.valid" class="btn-add">Ajouter</button>
+  </form>
+</div>
+
+<hr>
+
+<div class="recent-tasks">
+  <h3>Tâches récentes</h3>
+
+  <ul>
+    @for (task of tasks(); track task.id) {
+      <li class="task-item" [class.editing]="editingTaskId === task.id">
+
+        @if (editingTaskId === task.id) {
+          <div class="edit-mode">
+            <input #titleInput type="text" [value]="task.title" class="edit-input">
+
+            <select #statusInput [value]="task.status" class="edit-select">
+              <option value="todo">À faire</option>
+              <option value="doing">En cours</option>
+              <option value="done">Terminé</option>
+            </select>
+
+            <div class="edit-actions">
+              <button (click)="saveEdit(task, titleInput.value, statusInput.value)" type="button" class="btn btn-success">Success</button>
+              <button (click)="cancelEdit()" type="button" class="btn btn-secondary">Cancel</button>
+
+            </div>
+          </div>
+        }
+
+        @else {
+          <div class="view-mode">
+            <span class="task-title">{{ task.title }}</span>
+
+            <div class="meta-info">
+              <span class="status-badge" [class]="task.status">{{ task.status }}</span>
+              <span class="badge" [class]="task.priority">{{ task.priority }}</span>
+            </div>
+
+            <div class="actions">
+              <button (click)="startEdit(task.id)" class="btn btn-warning btn-sm">Modif.</button>
+
+              <button (click)="onDelete(task.id)" class="btn btn-danger btn-sm">Suppr.</button>
+            </div>
+          </div>
+        }
+      </li>
+    } @empty {
+      <li>Aucune tâche pour le moment.</li>
+    }
+  </ul>
+</div>
