@@ -12,5 +12,4 @@ export class About {
   appVersion = '1.0.0';
   lastUpdate = new Date();
 
-  constructor() { }
 }

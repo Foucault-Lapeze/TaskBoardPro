@@ -18,6 +18,8 @@ export class Tasks {
 
   tasks = this.taskService.tasks;
 
+  selectedTask: Task | null = null;
+
   editingTaskId: number | null = null;
 
   taskForm = this.fb.group({
@@ -57,5 +59,13 @@ export class Tasks {
 
     this.taskService.updateTask(updatedTask);
     this.editingTaskId = null;
+  }
+
+  openTaskDetails(task: Task) {
+    this.selectedTask = task;
+  }
+
+  closeTaskDetails() {
+    this.selectedTask = null;
   }
 }

@@ -19,7 +19,11 @@
           </p>
           <hr>
           <div class="d-flex justify-content-between align-items-center mt-3">
-            <button  type="button" class="btn btn-primary btn-lg">-> Tâches</button>
+            <a routerLink="/tasks" class="btn btn-primary">
+              <i class="bi bi-list-task">
+                Taches
+              </i>
+            </a>
             <span class="badge bg-light text-dark border">Version {{ appVersion }}</span>
             <small class="text-muted">Mis à jour le : {{ lastUpdate | date:'dd/MM/yyyy' }}</small>
           </div>
