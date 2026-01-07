@@ -1,67 +1,30 @@
-<div class="task-creation-container">
-  <h2>Nouvelle Tâche</h2>
+<div class="container py-5">
 
-  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
-    <div class="form-group">
-      <input type="text" formControlName="title" placeholder="Que devez-vous faire ?" class="form-input" />
-    </div>
-    <div class="form-group">
-      <select formControlName="priority" class="form-select">
-        <option value="low">Basse</option>
-        <option value="medium">Moyenne</option>
-        <option value="high">Haute</option>
-      </select>
-    </div>
-    <button type="submit" [disabled]="!taskForm.valid" class="btn-add">Ajouter</button>
-  </form>
-</div>
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold text-primary">Bienvenu sur TaskBoardPro</h1>
+    <p class="lead text-secondary">
+      La solution ultime pour gérer vos projets et booster votre productivité.
+    </p>
+  </div>
 
-<hr>
-
-<div class="recent-tasks">
-  <h3>Tâches récentes</h3>
-
-  <ul>
-    @for (task of tasks(); track task.id) {
-      <li class="task-item" [class.editing]="editingTaskId === task.id">
-
-        @if (editingTaskId === task.id) {
-          <div class="edit-mode">
-            <input #titleInput type="text" [value]="task.title" class="edit-input">
-
-            <select #statusInput [value]="task.status" class="edit-select">
-              <option value="todo">À faire</option>
-              <option value="doing">En cours</option>
-              <option value="done">Terminé</option>
-            </select>
-
-            <div class="edit-actions">
-              <button (click)="saveEdit(task, titleInput.value, statusInput.value)" type="button" class="btn btn-success">Success</button>
-              <button (click)="cancelEdit()" type="button" class="btn btn-secondary">Cancel</button>
-
-            </div>
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <h2 class="h4 mb-3">Notre Mission</h2>
+          <p class="card-text text-muted">
+            TaskBoardPro a été conçu pour simplifier la vie des développeurs et des chefs de projet.
+            Nous croyons qu'une interface claire mène à un esprit clair. Notre objectif est de fournir
+            un outil puissant sans la complexité des logiciels traditionnels.
+          </p>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <button  type="button" class="btn btn-primary btn-lg">-> Tâches</button>
+            <span class="badge bg-light text-dark border">Version {{ appVersion }}</span>
+            <small class="text-muted">Mis à jour le : {{ lastUpdate | date:'dd/MM/yyyy' }}</small>
           </div>
-        }
-
-        @else {
-          <div class="view-mode">
-            <span class="task-title">{{ task.title }}</span>
-
-            <div class="meta-info">
-              <span class="status-badge" [class]="task.status">{{ task.status }}</span>
-              <span class="badge" [class]="task.priority">{{ task.priority }}</span>
-            </div>
-
-            <div class="actions">
-              <button (click)="startEdit(task.id)" class="btn btn-warning btn-sm">Modif.</button>
-
-              <button (click)="onDelete(task.id)" class="btn btn-danger btn-sm">Suppr.</button>
-            </div>
-          </div>
-        }
-      </li>
-    } @empty {
-      <li>Aucune tâche pour le moment.</li>
-    }
-  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
