@@ -1,5 +1,5 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {Header} from './header/header';
 import {Footer} from './footer/footer';
@@ -7,8 +7,7 @@ import {Footer} from './footer/footer';
 @Component({
   selector: 'app-root',
   standalone: true,
-  //imports: [RouterOutlet, RouterLinkActive, RouterLink, CommonModule, Header, Footer],
-  imports: [RouterOutlet, CommonModule, Header, Footer],
+  imports: [CommonModule, RouterOutlet, Header, Footer],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
