@@ -39,7 +39,7 @@ describe('Footer Component', () => {
     const currentYearStr = new Date().getFullYear().toString();
 
     expect(copyrightSpan?.textContent).toContain('Copyright ©');
-    expect(copyrightSpan?.textContent).toContain(currentYearStr); // Vérifie l'année (ex: 2026)
+    expect(copyrightSpan?.textContent).toContain(currentYearStr);
     expect(copyrightSpan?.textContent).toContain('Tous droits réservés');
   });
 });

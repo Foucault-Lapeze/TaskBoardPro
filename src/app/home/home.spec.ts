@@ -40,7 +40,7 @@ describe('Header Component', () => {
   it('should have 3 navigation links', () => {
     const links = fixture.debugElement.queryAll(By.css('.nav-link'));
 
-    expect(links.length).toBe(3); // Home, Taches, A Propos
+    expect(links.length).toBe(3);
   });
 
   it('should have correct links and labels', () => {
