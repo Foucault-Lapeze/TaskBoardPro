@@ -23,6 +23,7 @@ export class Tasks {
   doingCount = this.taskService.doingCount;
   doneCount = this.taskService.doneCount;
   percentage = this.taskService.progressPercentage;
+  todoCount = this.taskService.todoCount;
 
   editingTaskId: number | null = null;
 

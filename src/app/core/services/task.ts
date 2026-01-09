@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { Task } from '../models/task.model';
 
 @Injectable({
@@ -11,61 +11,31 @@ export class TaskService {
     { id: 2, title: 'Créer TaskBoard Pro', priority: 'low', status: 'todo' },
   ];
 
-  private tasksSignal = signal<Task[]>([]);
+  private tasksSignal = signal<Task[]>(this.defaultTasks);
 
   readonly tasks = this.tasksSignal.asReadonly();
 
-  //computed permet de retourner une valeur immédiatement
-  doingCount = computed(() =>
-    this.tasks().filter(t => t.status === 'doing').length
-  );
-
-  doneCount = computed(() =>
-    this.tasks().filter(t => t.status === 'done').length
-  );
+  doingCount = computed(() => this.tasks().filter(t => t.status === 'doing').length);
+  doneCount = computed(() => this.tasks().filter(t => t.status === 'done').length);
+  todoCount = computed(() => this.tasks().filter(t => t.status === 'todo').length);
 
   progressPercentage = signal(0);
 
   constructor() {
-    const savedTasks = localStorage.getItem('tasks');
-
-    if (savedTasks) {
-      this.tasksSignal.set(JSON.parse(savedTasks));
-    } else {
-      this.tasksSignal.set(this.defaultTasks);
-    }
-
-    effect(() => {
-      const tasksToSave = this.tasksSignal();
-      localStorage.setItem('tasks', JSON.stringify(tasksToSave));
-    });
-    this.calculatePercentageAsync();
   }
 
   private async calculatePercentageAsync() {
     await new Promise(resolve => setTimeout(resolve, 1000));
-
     const currentTasks = this.tasksSignal();
     const total = currentTasks.length;
     const done = currentTasks.filter(t => t.status === 'done').length;
-
-    if (total === 0) {
-      this.progressPercentage.set(0);
-    } else {
-      this.progressPercentage.set(Math.round((done / total) * 100));
-    }
+    if (total === 0) this.progressPercentage.set(0);
+    else this.progressPercentage.set(Math.round((done / total) * 100));
   }
 
   addTask(title: string, priority: 'high' | 'medium' | 'low') {
-    const newTask: Task = {
-      id: Date.now(),
-      title,
-      priority,
-      status: 'todo'
-    };
-
+    const newTask: Task = { id: Date.now(), title, priority, status: 'todo' };
     this.tasksSignal.update(tasks => [newTask, ...tasks]);
-
     this.calculatePercentageAsync();
   }
 
