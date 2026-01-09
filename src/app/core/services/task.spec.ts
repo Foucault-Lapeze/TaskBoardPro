@@ -17,8 +17,8 @@ describe('TaskService', () => {
   it('should have initial tasks', () => {
     const tasks = service.tasks();
 
-    expect(tasks.length).toBe(2); // Tu as mis 2 tâches par défaut
-    expect(tasks[0].title).toBe('Apprendre Angular');
+    expect(tasks.length).toBe(2);
+    expect(tasks[1].priority).toBe('low');
   });
 
   it('should add a new task', () => {
@@ -27,7 +27,8 @@ describe('TaskService', () => {
     service.addTask('Nouvelle Tâche Test', 'medium');
 
     const tasks = service.tasks();
-    const addedTask = tasks[tasks.length - 1];
+    // addTask ajoute au DEBUT du tableau (unshift), donc c'est l'index 0
+    const addedTask = tasks[0];
 
     expect(tasks.length).toBe(initialCount + 1);
     expect(addedTask.title).toBe('Nouvelle Tâche Test');
@@ -37,16 +38,19 @@ describe('TaskService', () => {
   });
 
   it('should delete a task by id', () => {
+    // On supprime l'ID 1 qui existe par défaut
     service.deleteTask(1);
 
     const tasks = service.tasks();
     const taskFound = tasks.find(t => t.id === 1);
 
+    // Il restait 2 tâches, on en enlève 1 -> il en reste 1
     expect(tasks.length).toBe(1);
     expect(taskFound).toBeUndefined();
   });
 
   it('should update an existing task', () => {
+    // On cherche l'ID 2 qui existe par défaut
     const originalTask = service.tasks().find(t => t.id === 2)!;
 
     const modifiedTask: Task = {
@@ -59,8 +63,9 @@ describe('TaskService', () => {
 
     const updatedTaskInService = service.tasks().find(t => t.id === 2);
 
-    expect(updatedTaskInService?.title).toBe('Titre Modifié');
     expect(updatedTaskInService?.status).toBe('done');
+    expect(updatedTaskInService?.title).toBe('Titre Modifié');
+    // La priorité n'a pas changé, elle reste 'low'
     expect(updatedTaskInService?.priority).toBe('low');
   });
 

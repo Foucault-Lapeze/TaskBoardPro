@@ -20,6 +20,11 @@ export class Tasks {
 
   selectedTask: Task | null = null;
 
+  doingCount = this.taskService.doingCount;
+  doneCount = this.taskService.doneCount;
+  percentage = this.taskService.progressPercentage;
+  todoCount = this.taskService.todoCount;
+
   editingTaskId: number | null = null;
 
   taskForm = this.fb.group({

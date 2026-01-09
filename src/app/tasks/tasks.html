@@ -68,6 +68,37 @@
       <li>Aucune tâche pour le moment.</li>
     }
   </ul>
+  <hr>
+
+  <div class="stats-container">
+
+    <div class="stat-card">
+      <span class="stat-value text-success">{{ todoCount() }}</span>
+      <span class="stat-label">Todo</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-value text-primary">{{ doingCount() }}</span>
+      <span class="stat-label">En cours</span>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-value text-success">{{ doneCount() }}</span>
+      <span class="stat-label">Terminées</span>
+    </div>
+
+    <div class="stat-card progress-card">
+      <div class="progress-info">
+        <span class="stat-label">Progression globale</span>
+        <span class="stat-percentage">{{ percentage() }}%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" [style.width.%]="percentage()"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
 </div>
 
 @if (selectedTask) {
