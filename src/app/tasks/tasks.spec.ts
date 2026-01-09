@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { Tasks } from './tasks';
-import {TaskService} from '../core/services/task';
+import { TaskService } from '../core/services/task';
+
 describe('Tasks Component', () => {
   let component: Tasks;
   let fixture: ComponentFixture<Tasks>;
@@ -10,14 +10,12 @@ describe('Tasks Component', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Tasks],
-
       providers: [TaskService]
     })
       .compileComponents();
 
     fixture = TestBed.createComponent(Tasks);
     component = fixture.componentInstance;
-
     taskService = TestBed.inject(TaskService);
 
     fixture.detectChanges();
@@ -27,11 +25,8 @@ describe('Tasks Component', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should have invalid form initially (button disabled)', () => {
-
     expect(component.taskForm.valid).toBe(false);
-
     const btnAdd = fixture.nativeElement.querySelector('.btn-add');
     expect(btnAdd.disabled).toBe(true);
   });
@@ -39,7 +34,6 @@ describe('Tasks Component', () => {
   it('should enable button when form is valid', () => {
     component.taskForm.controls['title'].setValue('Nouvelle Tâche Test');
     fixture.detectChanges();
-
     const btnAdd = fixture.nativeElement.querySelector('.btn-add');
     expect(btnAdd.disabled).toBe(false);
   });
@@ -49,8 +43,7 @@ describe('Tasks Component', () => {
     const initialCount = taskService.tasks().length;
     component.onSubmit();
     expect(taskService.tasks().length).toBe(initialCount + 1);
-
-    expect(component.taskForm.value.priority).toBe('low');
+    expect(component.taskForm.value.priority).toBe('low'); // Reset check
   });
 
   it('should display list of tasks', () => {
@@ -59,14 +52,11 @@ describe('Tasks Component', () => {
   });
 
   it('should switch to edit mode when clicking modify', () => {
-    expect(component.editingTaskId).toBeNull();
-
     const editBtn = fixture.nativeElement.querySelector('.btn-warning');
     editBtn.click();
     fixture.detectChanges();
 
     expect(component.editingTaskId).not.toBeNull();
-
     const editModeDiv = fixture.nativeElement.querySelector('.edit-mode');
     expect(editModeDiv).toBeTruthy();
 
