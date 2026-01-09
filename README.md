@@ -1,6 +1,6 @@
 # TaskBoard Pro
 
-Un petit tableau de tâches construit avec Angular 21 pour apprendre et démontrer l'approche Signal + standalone components.
+Projet du cour Angular Avancé, c'est un petit tableau de tâches construit avec Angular 21 pour apprendre et démontrer l'approche Signal + standalone components.
 
 ## Aperçu
 
