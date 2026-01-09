@@ -63,6 +63,8 @@ ng build --configuration production
 
 ```bash
 npm test
+# ou
+npm run test --coverage #afin de générer le rapport de couverture
 # équivalent à `ng test` (Karma + Jasmine) selon la config Angular CLI
 ```
 
