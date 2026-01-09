@@ -39,6 +39,7 @@
     "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.0.0",
     "@types/jasmine": "^5.1.13",
+    "@vitest/coverage-v8": "^4.0.16",
     "jasmine-core": "^5.13.0",
     "jsdom": "^27.1.0",
     "karma": "^6.4.4",
