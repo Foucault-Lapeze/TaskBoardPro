@@ -68,6 +68,8 @@ npm run test --coverage #afin de générer le rapport de couverture
 # équivalent à `ng test` (Karma + Jasmine) selon la config Angular CLI
 ```
 
+![img.png](img.png)
+
 Remarque : `vitest` est présent dans les dépendances dev mais la commande `test` lance `ng test` par défaut. Selon votre environnement ou runner (IDE), les tests peuvent être exécutés avec Vitest (parfois exposé par certains outils). Voir la section "Tests & problèmes connus" ci‑dessous.
 
 ## Structure du projet
