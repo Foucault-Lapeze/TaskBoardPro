@@ -122,5 +122,40 @@ fixture.detectChanges();
 
 ![img_1.png](img_1.png)
 
+## Déploiement sur GitHub Pages
+Configuration du GitHub Pages pour déployer l'application Angular :
+- dand le app.route.ts ajouter la la ligne suivante :
+  `withHashLocation()`
+comme ceci : 
+```ts 
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter, withHashLocation } from '@angular/router'; // ajouter l'import 
+import { routes } from './app.routes';
 
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(
+      routes, 
+      withHashLocation() // fonction à ajouter 
+    )
+  ]
+};
+```
+Cette fonction permet de faire en sorte que tout ce qui est après le # soit ignoré par le serveur.
 
+- Utilisation des commandes suivantes : 
+```bash
+ng add angular-cli-ghpages
+```
+Cette commande va permettre 
+
+- Pour déployer faire la commande suivante : 
+```bash
+ng deploy --base-href=/NOM_DU_PROJET/
+```
+
+Cette commande permet de faire en sorte que le projet soit déployé sur GitHub Pages.
+
+Puis via le site GitHub aller dans les paramètres du projet, puis dans la section "Pages", dans "Build and Deployment" sélectionner Deploy from a branch, puis dans la section juste en dessous "Branch" prendre la branche (main/master ou gh-pages) puis root pour le dossier et cliquer sur save'
+
+Une fois toutes les étapes réalisée, le projet devrait être déployer en cliquant sur le lien "Visit Page" depuis le site GitHub.
