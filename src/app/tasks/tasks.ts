@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TaskService} from '../core/services/task';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Task} from '../core/models/task.model';
@@ -11,6 +11,7 @@ import {Task} from '../core/models/task.model';
   ],
   templateUrl: './tasks.html',
   styleUrl: './tasks.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Tasks {
   private taskService = inject(TaskService);

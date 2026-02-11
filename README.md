@@ -118,3 +118,9 @@ fixture.detectChanges();
 - Si vous préférez exécuter les tests exclusivement avec Vitest, vous pouvez migrer les specs pour utiliser `vi` au lieu de `spyOn` et configurer Vitest (`globals: true`) pour avoir une expérience proche de Jasmine.
 - Tester les interactions DOM via `DebugElement` (`By.css(...)` et `triggerEventHandler`) rend les tests plus robustes et moins dépendants de l'implémentation exacte du DOM.
 
+## Audit Lighthouse
+
+![img_1.png](img_1.png)
+
+
+
