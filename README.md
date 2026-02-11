@@ -159,3 +159,27 @@ Cette commande permet de faire en sorte que le projet soit déployé sur GitHub 
 Puis via le site GitHub aller dans les paramètres du projet, puis dans la section "Pages", dans "Build and Deployment" sélectionner Deploy from a branch, puis dans la section juste en dessous "Branch" prendre la branche (main/master ou gh-pages) puis root pour le dossier et cliquer sur save'
 
 Une fois toutes les étapes réalisée, le projet devrait être déployer en cliquant sur le lien "Visit Page" depuis le site GitHub.
+
+## Installation du SSR 
+dans le projet faire la commande : 
+```bash
+ng add @angular/ssr
+```
+Si jamais erreur ERESOLVE alors mettre à jour le projet avec la commande suivante : 
+```bash
+ng update @angular/core @angular/cli
+```
+Puis relancer la commande d'installation du SSR
+
+Faire la commande suivante pour construire l'application Angular optimisée pour la production :
+```bash
+ng build --configuration production
+```
+
+Pour lancer le serveur SSR faire la commande suivante : 
+```bash
+node dist/nom-du-projet/server/server.mjs
+```
+
+
+
