@@ -147,7 +147,10 @@ Cette fonction permet de faire en sorte que tout ce qui est après le # soit ign
 ```bash
 ng add angular-cli-ghpages
 ```
-Cette commande va permettre 
+Cette commande va permettre de compiler notre application puis pousser la sortie de construction vers une branche dédiée (ex : master ou gh-pages), le tout avec une commande : 
+```
+ng deploy`
+```
 
 - Pour déployer faire la commande suivante : 
 ```bash
